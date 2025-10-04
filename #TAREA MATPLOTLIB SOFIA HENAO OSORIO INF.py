@@ -35,3 +35,26 @@ plt.title("Scatter")
 plt.xlabel("índice")
 plt.ylabel("valor")
 plt.grid(True)
+
+# Panel 3 - Errorbar-La guia de la tarea pide una grafica tipo bar pero en clase aprendimos a usar el errorbar
+plt.subplot(3, 2, 3)
+y = mat_T[2][:30]               # valores de la fila 2 (primeros 30)
+x = np.arange(30)               # índices
+err = np.random.rand(30) * 0.2  # errores simulados 
+
+plt.errorbar(x, y, yerr=err, fmt='o', color="purple",
+            ecolor="black", elinewidth=1, capsize=3, label="fila 2")
+plt.title("Errorbar (primeros 30)")
+plt.xlabel("índice (0..29)")
+plt.ylabel("valor")
+plt.grid(True)
+plt.legend()
+
+#Panel 4-histograma
+plt.subplot(3, 2, 4)
+plt.hist(mat_T[3], bins=20,normed=True, histtype="stepfilled", edgecolor="none", color="y", alpha=0.7)
+plt.title("Histograma")
+plt.xlabel("valor")
+plt.ylabel("frecuencia")
+plt.grid(True)
+
