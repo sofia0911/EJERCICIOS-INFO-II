@@ -4,18 +4,21 @@ import matplotlib.pyplot as plt
 
 
 
-vec = np.random.rand(720) #Vector creado de forma aleatoria
+vec = np.random.rand(720) #1-Vector creado de forma aleatoria
 
-mat = vec.reshape(120, 6) #Hacer rechape
+mat = vec.reshape(120, 6) #2-Hacer rechape
 
-mat_T = mat.T   # Crear transpuesta de la matriz inicial
+#3-Crear transpuesta de la matriz inicial y copias de esta en orden C y F
+mat_T = mat.T   
 
-#Crear copias con orden C y F
 mat_T_C = np.array(mat_T, order="C")
 mat_T_F = np.array(mat_T, order="F")
 
-#Crear el subplot con 6 paneles
+#4-Crear el subplot con 6 paneles
 plt.figure(figsize=(12, 9))
+
+#5- Creación de graficos en cada panel 
+#6-Titulos y etiquetas
 
 # Panel 1-Plot
 plt.subplot(3, 2, 1)   # (filas, columnas, índice)
@@ -36,7 +39,7 @@ plt.xlabel("índice")
 plt.ylabel("valor")
 plt.grid(True)
 
-# Panel 3 - Errorbar-La guia de la tarea pide una grafica tipo bar pero en clase aprendimos a usar el errorbar
+# Panel 3 - Errorbar-aprendido en clase
 plt.subplot(3, 2, 3)
 y = mat_T[2][:30]               # valores de la fila 2 (primeros 30)
 x = np.arange(30)               # índices
@@ -57,4 +60,28 @@ plt.title("Histograma")
 plt.xlabel("valor")
 plt.ylabel("frecuencia")
 plt.grid(True)
+
+# Panel 5- pie
+plt.subplot(3, 2, 5)
+sizes = mat_T[4].reshape(6, -1).sum(axis=1)
+labels = [f"G{i}" for i in range(6)]
+colors=['#ff9999','#66b3ff','#99ff99','#ffcc99', '#c2c2f0', '#ffb3e6']
+plt.pie(sizes, labels=labels, colores=colors, autopct="%1.1f%%")
+plt.title("Pie (fila 4)")
+
+# Panel 6 - Bar 
+plt.subplot(3, 2, 6)
+sums = mat_T.sum(axis=1)  # suma de cada fila
+x = np.arange(6)
+
+plt.bar(x, sums, color="teal")#6 barras, cada una representa la suma de los 120 valores de cada fila de mat_T
+plt.title("Bar (suma por fila)")
+plt.xlabel("Fila")
+plt.ylabel("Suma")
+plt.grid(True)
+
+plt.suptitle("6 paneles con diferentes gráficos", fontsize=16, y=1.02)
+plt.tight_layout()
+plt.show()
+
 
