@@ -55,7 +55,7 @@ plt.legend()
 
 #Panel 4-histograma
 plt.subplot(3, 2, 4)
-plt.hist(mat_T[3], bins=20,normed=True, histtype="stepfilled", edgecolor="none", color="y", alpha=0.7)
+plt.hist(mat_T[3], bins=20,density=True, histtype="stepfilled", edgecolor="none", color="y", alpha=0.7)
 plt.title("Histograma")
 plt.xlabel("valor")
 plt.ylabel("frecuencia")
@@ -66,7 +66,7 @@ plt.subplot(3, 2, 5)
 sizes = mat_T[4].reshape(6, -1).sum(axis=1)
 labels = [f"G{i}" for i in range(6)]
 colors=['#ff9999','#66b3ff','#99ff99','#ffcc99', '#c2c2f0', '#ffb3e6']
-plt.pie(sizes, labels=labels, colores=colors, autopct="%1.1f%%")
+plt.pie(sizes, labels=labels, colors=colors, autopct="%1.1f%%")
 plt.title("Pie (fila 4)")
 
 # Panel 6 - Bar 
