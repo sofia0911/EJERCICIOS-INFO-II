@@ -82,6 +82,8 @@ plt.grid(True)
 
 plt.suptitle("6 paneles con diferentes gráficos", fontsize=16, y=1.02)
 plt.tight_layout()
+plt.subplots_adjust(hspace=0.6, wspace=0.4)
+
 plt.show()
 
 
